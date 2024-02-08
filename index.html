@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/Baujahr_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[52.28293192081955,4.716183382130304],[52.43702586558688,5.089763994641953]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_ESRIGraylight_0');
+        map.getPane('pane_ESRIGraylight_0').style.zIndex = 400;
+        var layer_ESRIGraylight_0 = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            pane: 'pane_ESRIGraylight_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_ESRIGraylight_0;
+        map.addLayer(layer_ESRIGraylight_0);
+        function pop_Baujahr_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Baujahr</th>\
+                        <td>' + (feature.properties['Baujahr'] !== null ? autolinker.link(feature.properties['Baujahr'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Baujahr_1_0(feature) {
+            if (feature.properties['Baujahr'] >= 1.000000 && feature.properties['Baujahr'] <= 1860.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,0,38,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Baujahr'] >= 1860.000000 && feature.properties['Baujahr'] <= 1920.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,39,34,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Baujahr'] >= 1920.000000 && feature.properties['Baujahr'] <= 1940.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(244,86,41,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Baujahr'] >= 1940.000000 && feature.properties['Baujahr'] <= 1970.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,141,60,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Baujahr'] >= 1970.000000 && feature.properties['Baujahr'] <= 1985.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,183,81,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Baujahr'] >= 1986.000000 && feature.properties['Baujahr'] <= 2001.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,221,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Baujahr'] >= 2002.000000 && feature.properties['Baujahr'] <= 3000.000000 ) {
+                return {
+                pane: 'pane_Baujahr_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,255,85,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Baujahr_1');
+        map.getPane('pane_Baujahr_1').style.zIndex = 401;
+        map.getPane('pane_Baujahr_1').style['mix-blend-mode'] = 'normal';
+        var layer_Baujahr_1 = new L.geoJson(json_Baujahr_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Baujahr_1',
+            layerName: 'layer_Baujahr_1',
+            pane: 'pane_Baujahr_1',
+            onEachFeature: pop_Baujahr_1,
+            style: style_Baujahr_1_0,
+        });
+        bounds_group.addLayer(layer_Baujahr_1);
+        map.addLayer(layer_Baujahr_1);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Baujahr<br /><table><tr><td style="text-align: center;"><img src="legend/Baujahr_1_vor18600.png" /></td><td>vor 1860</td></tr><tr><td style="text-align: center;"><img src="legend/Baujahr_1_186019201.png" /></td><td>1860 - 1920</td></tr><tr><td style="text-align: center;"><img src="legend/Baujahr_1_192019402.png" /></td><td>1920 - 1940</td></tr><tr><td style="text-align: center;"><img src="legend/Baujahr_1_194019703.png" /></td><td>1940 - 1970</td></tr><tr><td style="text-align: center;"><img src="legend/Baujahr_1_197019854.png" /></td><td>1970 - 1985</td></tr><tr><td style="text-align: center;"><img src="legend/Baujahr_1_198620015.png" /></td><td>1986 - 2001</td></tr><tr><td style="text-align: center;"><img src="legend/Baujahr_1_nach20016.png" /></td><td>nach 2001</td></tr></table>': layer_Baujahr_1,"ESRI Gray (light)": layer_ESRIGraylight_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
